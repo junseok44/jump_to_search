@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JumpToSearch</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <!-- 홈 화면 (컴팩트) -->
+    <div id="homePage" class="page active">
+      <div class="home-container">
+        <div class="search-section">
+          <!-- 첫 번째 줄: 검색 관련 -->
+          <div class="search-row">
+            <select id="siteSelect" class="site-dropdown">
+              <option value="">Select a site</option>
+            </select>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Enter search term"
+              class="search-field"
+            />
+            <button id="searchBtn" class="search-btn" title="Search">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- 두 번째 줄: 옵션과 버튼들 -->
+          <div class="options-row">
+            <label class="checkbox-label">
+              <input type="checkbox" id="newTabCheckbox" checked />
+              <span>Open in new tab</span>
+            </label>
+            <div class="site-actions">
+              <button
+                id="listSitesBtn"
+                class="icon-btn list-btn"
+                title="View all sites"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <line x1="8" y1="6" x2="21" y2="6"></line>
+                  <line x1="8" y1="12" x2="21" y2="12"></line>
+                  <line x1="8" y1="18" x2="21" y2="18"></line>
+                  <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                  <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                  <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                </svg>
+              </button>
+              <button
+                id="addSiteBtn"
+                class="icon-btn add-btn"
+                title="Add new site"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 사이트 목록 화면 -->
+    <div id="sitesListPage" class="page">
+      <div class="page-header">
+        <button id="backFromListBtn" class="back-btn">← Back</button>
+        <h3>Search Sites</h3>
+      </div>
+
+      <div class="sites-list-container">
+        <div id="sitesList" class="sites-list">
+          <!-- 동적으로 생성됨 -->
+        </div>
+      </div>
+    </div>
+
+    <!-- 사이트 추가 화면 -->
+    <div id="addSitePage" class="page">
+      <div class="page-header">
+        <button id="backFromAddBtn" class="back-btn">← Back</button>
+        <h3>Add New Site</h3>
+      </div>
+
+      <div class="form-container">
+        <div class="form-group">
+          <label for="siteName">Site Name</label>
+          <input type="text" id="siteName" placeholder="e.g. StackOverflow" />
+        </div>
+        <div class="form-group">
+          <label for="siteUrl">Search URL Template</label>
+          <input
+            type="text"
+            id="siteUrl"
+            placeholder="e.g. https://stackoverflow.com/search?q={query}"
+          />
+          <small>Use {query} to represent the search term</small>
+        </div>
+        <div class="form-actions">
+          <button id="saveSiteBtn" class="primary-btn">Save Site</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 사이트 편집 화면 -->
+    <div id="editSitePage" class="page">
+      <div class="page-header">
+        <button id="backFromEditBtn" class="back-btn">← Back</button>
+        <h3>Edit Site</h3>
+      </div>
+
+      <div class="form-container">
+        <div class="form-group">
+          <label for="editSiteName">Site Name</label>
+          <input
+            type="text"
+            id="editSiteName"
+            placeholder="e.g. StackOverflow"
+          />
+        </div>
+        <div class="form-group">
+          <label for="editSiteUrl">Search URL Template</label>
+          <input
+            type="text"
+            id="editSiteUrl"
+            placeholder="e.g. https://stackoverflow.com/search?q={query}"
+          />
+          <small>Use {query} to represent the search term</small>
+        </div>
+        <div class="form-actions">
+          <button id="updateSiteBtn" class="primary-btn">Update Site</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

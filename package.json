@@ -1,0 +1,31 @@
+{
+  "name": "jump-to-search",
+  "version": "1.0.0",
+  "description": "사용자가 선택한 사이트의 검색창으로 즉시 이동할 수 있는 검색 도우미 크롬 확장 프로그램",
+  "main": "popup.js",
+  "scripts": {
+    "build": "echo 'Chrome Extension은 빌드 과정이 필요하지 않습니다.'",
+    "dev": "echo 'Chrome에서 개발자 모드로 확장 프로그램을 로드하세요.'",
+    "test": "echo '테스트는 Chrome 확장 프로그램 페이지에서 확인하세요.'"
+  },
+  "keywords": [
+    "chrome-extension",
+    "search",
+    "browser-extension",
+    "javascript",
+    "manifest-v3"
+  ],
+  "author": "JumpToSearch Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/jump-to-search.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/jump-to-search/issues"
+  },
+  "homepage": "https://github.com/yourusername/jump-to-search#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
