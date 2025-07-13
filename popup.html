@@ -110,6 +110,37 @@
       </div>
 
       <div class="form-container">
+        <!-- 통합된 가이드와 예시 -->
+        <div class="setup-guide">
+          <h4>How to add a search site:</h4>
+          <div class="step-list">
+            <div class="step">
+              <span class="step-number">1</span>
+              <span class="step-text">Go to the website you want to add</span>
+            </div>
+            <div class="step">
+              <span class="step-number">2</span>
+              <span class="step-text">Search for anything on that site</span>
+            </div>
+            <div class="step">
+              <span class="step-number">3</span>
+              <span class="step-text">Copy the URL from your browser</span>
+            </div>
+            <div class="step">
+              <span class="step-number">4</span>
+              <span class="step-text"
+                >Replace your search term with <code>{query}</code></span
+              >
+            </div>
+          </div>
+
+          <div class="example-section">
+            <strong>Example:</strong>
+            <code>https://stackoverflow.com/search?q=javascript</code> →
+            <code>https://stackoverflow.com/search?q={query}</code>
+          </div>
+        </div>
+
         <div class="form-group">
           <label for="siteName">Site Name</label>
           <input type="text" id="siteName" placeholder="e.g. StackOverflow" />
@@ -121,8 +152,8 @@
             id="siteUrl"
             placeholder="e.g. https://stackoverflow.com/search?q={query}"
           />
-          <small>Use {query} to represent the search term</small>
         </div>
+
         <div class="form-actions">
           <button id="saveSiteBtn" class="primary-btn">Save Site</button>
         </div>
