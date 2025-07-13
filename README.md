@@ -1,120 +1,132 @@
 # 🔍 JumpToSearch
 
-사용자가 선택한 사이트의 검색창으로 즉시 이동할 수 있는 검색 도우미 크롬 확장 프로그램입니다.
+A Chrome extension that allows users to instantly jump to search pages of selected websites with a clean and intuitive interface.
 
-## ✨ 주요 기능
+## ✨ Key Features
 
-### 🔍 검색 실행
+### 🔍 Quick Search
 
-- 드롭다운에서 검색 대상 사이트 선택
-- 검색어 입력 후 검색 버튼 클릭
-- 새 탭 또는 현재 탭에서 열기 옵션
+- Select target website from dropdown
+- Enter search terms and click search icon
+- Option to open in new tab or current tab
+- Keyboard shortcut support (Cmd+Shift+S / Ctrl+Shift+S)
 
-### 🏪 사이트 등록/관리
+### 🏪 Site Management
 
-- 사용자가 직접 검색 엔진 추가 가능
-- 사이트 이름과 URL 템플릿 설정
-- `{query}` 키워드로 검색어 자동 삽입
-- 등록한 사이트는 드롭다운에 즉시 반영
-- 로컬스토리지 기반 저장
+- Add custom search engines with URL templates
+- Use `{query}` placeholder for automatic search term insertion
+- Drag and drop to reorder sites
+- Edit or delete registered sites
+- Local storage for persistence
 
-### ⚙️ 설정 옵션
+### 🎨 Modern UI/UX
 
-- 새 탭 여부를 체크박스로 지정
-- 등록한 검색 엔진 수정/삭제 가능
-- 간단한 리스트 UI 제공
+- Compact home interface with two-row layout
+- Separate pages for different functions (no animation conflicts)
+- Focus management with TAB navigation
+- Responsive design with hover effects
+- Notification system for user feedback
 
-## 🚀 기본 제공 사이트
+## 🚀 Default Search Sites
 
 - **Google**: `https://www.google.com/search?q={query}`
 - **YouTube**: `https://www.youtube.com/results?search_query={query}`
-- **Naver**: `https://search.naver.com/search.naver?query={query}`
-- **Stack Overflow**: `https://stackoverflow.com/search?q={query}`
-- **GitHub**: `https://github.com/search?q={query}`
 
-## 📦 설치 방법
+## 📦 Installation
 
-### 1. 개발자 모드 활성화
+### 1. Enable Developer Mode
 
-1. Chrome 브라우저에서 `chrome://extensions/` 접속
-2. 우측 상단의 "개발자 모드" 토글 활성화
+1. Go to `chrome://extensions/` in Chrome
+2. Enable "Developer mode" toggle in the top right
 
-### 2. 확장 프로그램 로드
+### 2. Load Extension
 
-1. "압축해제된 확장 프로그램을 로드합니다" 버튼 클릭
-2. 이 프로젝트 폴더 선택
-3. 확장 프로그램이 설치되면 브라우저 툴바에 아이콘 표시
+1. Click "Load unpacked" button
+2. Select this project folder
+3. Extension icon will appear in browser toolbar
 
-## 🎯 사용 방법
+## 🎯 How to Use
 
-### 기본 검색
+### Basic Search
 
-1. 브라우저 툴바의 JumpToSearch 아이콘 클릭
-2. 드롭다운에서 검색할 사이트 선택
-3. 검색어 입력
-4. "새 탭에서 열기" 옵션 확인/해제
-5. "검색" 버튼 클릭
+1. Click JumpToSearch icon in browser toolbar
+2. Select website from dropdown
+3. Enter search terms
+4. Toggle "Open in new tab" option
+5. Click search icon or press Enter
 
-### 새 사이트 추가
+### Adding New Sites
 
-1. 팝업에서 "+" 버튼 클릭
-2. 사이트 이름 입력 (예: "StackOverflow")
-3. 검색 URL 템플릿 입력 (예: `https://stackoverflow.com/search?q={query}`)
-4. "저장" 버튼 클릭
+1. Click "+" button in popup
+2. Enter site name (e.g., "StackOverflow")
+3. Enter search URL template (e.g., `https://stackoverflow.com/search?q={query}`)
+4. Click "Save Site"
 
-### 사이트 관리
+### Managing Sites
 
-1. "설정" 버튼 클릭
-2. 등록된 사이트 목록에서 "수정" 또는 "삭제" 버튼 사용
+1. Click list icon to view all sites
+2. Use drag and drop to reorder sites
+3. Click "Edit" or "Delete" buttons for each site
 
-## 🛠️ 기술 스택
+## 🛠️ Technical Stack
 
-- **플랫폼**: Chrome Extension (Manifest v3)
-- **언어**: JavaScript (ES6+)
-- **UI**: HTML + CSS (모던 디자인)
-- **저장 방식**: chrome.storage.local
+- **Platform**: Chrome Extension (Manifest v3)
+- **Language**: JavaScript (ES6+)
+- **UI**: HTML + CSS (Modern Design)
+- **Storage**: chrome.storage.local
+- **Features**: Drag & Drop, Keyboard Navigation, Focus Management
 
-## 📁 프로젝트 구조
+## 📁 Project Structure
 
 ```
 jump-to-search/
-├── manifest.json          # 확장 프로그램 설정
-├── popup.html            # 팝업 UI
-├── popup.css             # 스타일시트
-├── popup.js              # 팝업 로직
-├── background.js         # 백그라운드 서비스 워커
-├── icons/                # 아이콘 파일들
-└── README.md             # 프로젝트 문서
+├── manifest.json          # Extension configuration
+├── popup.html            # Popup UI
+├── popup.css             # Stylesheets
+├── popup.js              # Popup logic
+├── background.js         # Background service worker
+├── icons/                # Icon files
+└── README.md             # Project documentation
 ```
 
-## 🔧 개발 환경 설정
+## 🔧 Development Setup
 
-1. 프로젝트 클론 또는 다운로드
-2. Chrome 브라우저에서 개발자 모드 활성화
-3. 확장 프로그램 로드
-4. 코드 수정 후 확장 프로그램 새로고침
+1. Clone or download the project
+2. Enable developer mode in Chrome
+3. Load the extension
+4. Refresh extension after code changes
 
-## 🎨 커스터마이징
+## 🎨 Customization
 
-### 새 사이트 추가 예시
+### Adding New Sites Example
 
 ```
-사이트 이름: Reddit
-URL 템플릿: https://www.reddit.com/search/?q={query}
+Site Name: Reddit
+URL Template: https://www.reddit.com/search/?q={query}
 ```
 
-### CSS 스타일 수정
+### Modifying Styles
 
-`popup.css` 파일을 수정하여 UI 스타일 변경 가능
+Edit `popup.css` to customize UI appearance
 
-## 📝 라이선스
+## 🚀 Recent Updates
 
-이 프로젝트는 MIT 라이선스 하에 배포됩니다.
+- Complete UI/UX redesign with modern interface
+- Added keyboard shortcuts for quick access
+- Implemented drag-and-drop site reordering
+- Separated pages for better navigation
+- Enhanced focus management and accessibility
+- Added notification system for user feedback
+- Improved responsive design and hover effects
 
-## 🤝 기여하기
+## 📝 License
 
-버그 리포트, 기능 제안, 풀 리퀘스트를 환영합니다!
+This project is licensed under the MIT License.
+
+## 🤝 Contributing
+
+Bug reports, feature suggestions, and pull requests are welcome!
 
 ---
 
-**JumpToSearch**로 더 빠르고 효율적인 검색을 경험해보세요! 🚀
+Experience faster and more efficient searching with **JumpToSearch**! 🚀
