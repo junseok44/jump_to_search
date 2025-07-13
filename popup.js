@@ -131,11 +131,14 @@ class JumpToSearch {
 
     // Edit/Delete 버튼 이벤트 위임
     document.addEventListener("click", (e) => {
-      if (e.target.classList.contains("edit-btn")) {
-        const index = parseInt(e.target.getAttribute("data-index"));
+      const editBtn = e.target.closest(".edit-btn");
+      const deleteBtn = e.target.closest(".delete-btn");
+
+      if (editBtn) {
+        const index = parseInt(editBtn.getAttribute("data-index"));
         this.showEditSitePage(index);
-      } else if (e.target.classList.contains("delete-btn")) {
-        const index = parseInt(e.target.getAttribute("data-index"));
+      } else if (deleteBtn) {
+        const index = parseInt(deleteBtn.getAttribute("data-index"));
         this.deleteSite(index);
       }
     });
@@ -266,16 +269,35 @@ class JumpToSearch {
       const siteItem = document.createElement("div");
       siteItem.className = "site-item";
       siteItem.setAttribute("data-index", index);
-      siteItem.draggable = true;
 
       siteItem.innerHTML = `
+        <div class="drag-handle" draggable="true">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="5" r="1"></circle>
+            <circle cx="9" cy="12" r="1"></circle>
+            <circle cx="9" cy="19" r="1"></circle>
+            <circle cx="15" cy="5" r="1"></circle>
+            <circle cx="15" cy="12" r="1"></circle>
+            <circle cx="15" cy="19" r="1"></circle>
+          </svg>
+        </div>
         <div class="site-item-info">
           <div class="site-item-name">${site.name}</div>
           <div class="site-item-url">${site.url}</div>
         </div>
         <div class="site-item-actions">
-          <button class="edit-btn" data-index="${index}">Edit</button>
-          <button class="delete-btn" data-index="${index}">Delete</button>
+          <button class="edit-btn" data-index="${index}" title="Edit site">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+              <path d="m18.5 2.5 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+            </svg>
+          </button>
+          <button class="delete-btn" data-index="${index}" title="Delete site">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3,6 5,6 21,6"></polyline>
+              <path d="m19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"></path>
+            </svg>
+          </button>
         </div>
       `;
 
@@ -287,20 +309,26 @@ class JumpToSearch {
   }
 
   setupDragAndDrop() {
+    const dragHandles = document.querySelectorAll(".drag-handle");
     const siteItems = document.querySelectorAll(".site-item");
 
-    siteItems.forEach((item) => {
-      item.addEventListener("dragstart", (e) => {
+    dragHandles.forEach((handle) => {
+      handle.addEventListener("dragstart", (e) => {
+        const item = handle.closest(".site-item");
         this.draggedElement = item;
         item.classList.add("dragging");
         e.dataTransfer.effectAllowed = "move";
       });
 
-      item.addEventListener("dragend", () => {
-        item.classList.remove("dragging");
-        this.draggedElement = null;
+      handle.addEventListener("dragend", () => {
+        if (this.draggedElement) {
+          this.draggedElement.classList.remove("dragging");
+          this.draggedElement = null;
+        }
       });
+    });
 
+    siteItems.forEach((item) => {
       item.addEventListener("dragover", (e) => {
         e.preventDefault();
         e.dataTransfer.dropEffect = "move";
