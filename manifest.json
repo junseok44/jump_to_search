@@ -1,12 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "JumpToSearch",
+  "name": "Jump to Search",
   "version": "1.0.0",
   "description": "A search helper that allows users to instantly jump to search pages of selected websites",
   "permissions": ["storage", "tabs"],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "JumpToSearch"
+    "default_title": "Jump to Search"
   },
   "commands": {
     "_execute_action": {
@@ -14,7 +14,7 @@
         "default": "Ctrl+Shift+S",
         "mac": "Command+Shift+S"
       },
-      "description": "Open JumpToSearch popup"
+      "description": "Open Jump to Search popup"
     }
   },
   "icons": {
