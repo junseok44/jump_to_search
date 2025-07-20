@@ -3,7 +3,7 @@
   "name": "Jump to Search",
   "version": "1.0.0",
   "description": "A search helper that allows users to instantly jump to search pages of selected websites",
-  "permissions": ["storage", "tabs"],
+  "permissions": ["storage"],
   "action": {
     "default_popup": "popup.html",
     "default_title": "Jump to Search"
